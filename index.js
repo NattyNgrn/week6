@@ -5,6 +5,7 @@ const port = 4444;
 function getfunc(req, res) {
     const musicJson = require("./music.json");
     //const music = JSON.parse(musicJson);
+    res.send(musicJson.music[0])
     console.log(musicJson.music[0]);
 }
 
