@@ -15,7 +15,7 @@ function getfunc(req, res) {
     const reqObj = req.body();
     const reqalbum = reqObj.album; 
     res.send(musicObj[reqalbum]);
-    console.log(reqsong);
+    console.log(reqalbum);
 }
 
 // API
