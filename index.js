@@ -6,6 +6,7 @@ const app = express();
 const port = 4444;
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const foglake = {
@@ -16,7 +17,7 @@ const foglake = {
 };
 
 function getfunc(req, res) {
-    const reqObj = req.body();
+    const reqObj = req.params;
     const reqalbum = reqObj.album; 
     res.send(musicObj[reqalbum]);
     console.log(reqalbum);
@@ -29,7 +30,7 @@ function getfunc(req, res) {
 //delete album
 
 function putfunc(req, res){
-    const reqObj = req.body();
+    const reqObj = req.params;
     const reqalbum = reqObj.album;
     const reqsong = reqObj.song;
     musicObj[reqalbum].song = reqsong;
@@ -38,7 +39,7 @@ function putfunc(req, res){
 }
 
 function postfunc(req, res){
-    const reqObj = req.body();
+    const reqObj = req.params;
     const reqalbum = reqObj.album;
     musicObj[reqalbum] = {song: "a cool song"};
     res.send(musicObj);
@@ -46,17 +47,16 @@ function postfunc(req, res){
 }
 
 function deletefunc(req, res){
-    const reqObj = req.body();
+    const reqObj = req.params;
     const reqalbum = reqObj.album;
     delete musicObj[reqalbum];
     res.send(musicObj);
     console.log(musicJson.music);
 }
 
-getfunc();
-app.get('/', getfunc);
-app.put('/', putfunc);
-app.post('/', postfunc);
-app.delete('/', deletefunc);
+app.get('/:album', getfunc);
+app.put('/:album/:song', putfunc);
+app.post('/:album', postfunc);
+app.delete('/:album', deletefunc);
 
 app.listen(port, () => console.log(`ur mom is listening at ${port}`));
