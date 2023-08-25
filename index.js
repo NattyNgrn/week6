@@ -13,8 +13,7 @@ const foglake = {
 
 function getfunc(req, res) {
     const reqObj = req.body();
-    const reqalbum = reqObj.album;
-    const reqsong = reqObj.song;
+    const reqalbum = reqObj.album; 
     res.send(musicObj[reqalbum]);
     console.log(reqsong);
 }
