@@ -1,21 +1,34 @@
 const express = require("express");
 const app = express();
 const port = 4444;
+const fs = require("fs")
+
+
+const foglake = {
+"song": "Serotonin",
+"artist": "Fog Lake",
+"year": 2018,
+"album": "Captain"
+};
+
 
 function getfunc(req, res) {
-    const musicJson = require("./music.json");
-    //const music = JSON.parse(musicJson);
-    res.send(musicJson.music[0])
-    console.log(musicJson.music[0]);
+    const musicJson = fs.readFileSync("./music.json");
+    const musicObj = JSON.parse(musicJson);
+    res.send(musicObj.music[0])
+    console.log(musicObj.music[0]);
 }
 
 function putfunc(req, res){
-    const musicJson = require("./music.json");
+    const musicJson = fs.readFileSync("./music.json");
+    const musicObj = JSON.parse(musicJson);
+    musicObj.music
     console.log(musicJson.music);
 }
 
 function postfunc(req, res){
     const musicJson = require("./music.json");
+    res.send
     console.log(musicJson.music);
 }
 
@@ -24,6 +37,7 @@ function deletefunc(req, res){
     console.log(musicJson.music);
 }
 
+getfunc();
 app.get('/', getfunc);
 app.put('/', putfunc);
 app.post('/', postfunc);
