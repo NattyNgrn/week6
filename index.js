@@ -36,7 +36,7 @@ function putfunc(req, res){
 function postfunc(req, res){
     const reqObj = req.body();
     const reqalbum = reqObj.album;
-    musicObj = reqalbum;
+    musicObj[reqalbum] = {song: "a cool song"};
     res.send(musicObj);
     console.log(musicObj);
 }
