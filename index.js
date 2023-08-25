@@ -18,10 +18,20 @@ function getfunc(req, res) {
     res.send(musicObj.music[0])
     console.log(musicObj.music[0]);
 }
+// API
+"""
+{
+    "song" : songname
+    "number": Number
+}
+"""
 
 function putfunc(req, res){
     const musicJson = fs.readFileSync("./music.json");
     const musicObj = JSON.parse(musicJson);
+    const reqObj = JSON.parse(req);
+    const song = reqObj.song;
+    const number = reqObj.number;
     musicObj.music
     console.log(musicJson.music);
 }
