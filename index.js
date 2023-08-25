@@ -27,16 +27,23 @@ function putfunc(req, res){
     const reqalbum = reqObj.album;
     const reqsong = reqObj.song;
     musicObj[reqalbum].song = reqsong;
-    console.log(musicJson.music);
+    console.log(musicObj);
     res.send(musicObj);
 }
 
 function postfunc(req, res){
-    res.send
-    console.log(musicJson.music);
+    const reqObj = req.body();
+    const reqalbum = reqObj.album;
+    musicObj = reqalbum;
+    res.send(musicObj);
+    console.log(musicObj);
 }
 
 function deletefunc(req, res){
+    const reqObj = req.body();
+    const reqalbum = reqObj.album;
+    delete musicObj[reqalbum];
+    res.send(musicObj);
     console.log(musicJson.music);
 }
 
