@@ -1,8 +1,12 @@
 import musicObj from "./music.js";
-
-const express = require("express");
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
 const app = express();
 const port = 4444;
+
+app.use(cors());
+app.use(bodyParser.json());
 
 const foglake = {
 "song": "Serotonin",
@@ -54,4 +58,5 @@ app.get('/', getfunc);
 app.put('/', putfunc);
 app.post('/', postfunc);
 app.delete('/', deletefunc);
+
 app.listen(port, () => console.log(`ur mom is listening at ${port}`));
