@@ -1,4 +1,4 @@
-{
+const musicObj = {
 "Ascension": {
     "song": "Black Horse",
     "artist": "Sarah Kinsley",
@@ -29,3 +29,5 @@
     "year": 2022
 }
 }
+
+export default musicObj;

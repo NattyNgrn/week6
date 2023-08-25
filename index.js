@@ -1,8 +1,8 @@
+import musicObj from "./music.js";
+
 const express = require("express");
 const app = express();
 const port = 4444;
-const fs = require("fs")
-
 
 const foglake = {
 "song": "Serotonin",
@@ -11,39 +11,32 @@ const foglake = {
 "album": "Captain"
 };
 
-
 function getfunc(req, res) {
-    const musicJson = fs.readFileSync("./music.json");
-    const musicObj = JSON.parse(musicJson);
-    res.send(musicObj.music[0])
-    console.log(musicObj.music[0]);
+    res.send(musicObj)
+    console.log(musicObj);
 }
+
 // API
-"""
-{
-    "song" : songname
-    "number": Number
-}
-"""
+//API will be album
+//update the song in the album for put
+//add album with song and info for post
+//delete album
 
 function putfunc(req, res){
-    const musicJson = fs.readFileSync("./music.json");
-    const musicObj = JSON.parse(musicJson);
-    const reqObj = JSON.parse(req);
-    const song = reqObj.song;
-    const number = reqObj.number;
-    musicObj.music
+    const reqObj = req.body();
+    const reqalbum = reqObj.album;
+    const reqsong = reqObj.song;
+    musicObj[reqalbum].song = reqsong;
     console.log(musicJson.music);
+    res.send(musicObj);
 }
 
 function postfunc(req, res){
-    const musicJson = require("./music.json");
     res.send
     console.log(musicJson.music);
 }
 
 function deletefunc(req, res){
-    const musicJson = require("./music.json");
     console.log(musicJson.music);
 }
 
