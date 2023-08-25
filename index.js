@@ -12,7 +12,7 @@ const foglake = {
 };
 
 function getfunc(req, res) {
-    res.send(musicObj)
+    res.send(musicObj);
     console.log(musicObj);
 }
 
